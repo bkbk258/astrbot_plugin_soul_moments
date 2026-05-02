@@ -1,0 +1,101 @@
+{
+  "enable": {
+    "description": "启用插件",
+    "type": "bool",
+    "hint": "Soul Moments 插件总开关",
+    "default": true
+  },
+  "moments_settings": {
+    "description": "说说发布设置",
+    "type": "object",
+    "hint": "控制 Bot 自动发布 QQ 说说/动态的行为",
+    "items": {
+      "platform_id": {
+        "description": "平台 ID",
+        "hint": "要发说说的平台 ID，多个用逗号隔开（如「宋志豪,李四」）。和 AstrBot 平台配置里的 ID 一致",
+        "type": "string",
+        "default": ""
+      },
+      "daily_range": {
+        "description": "每天发布条数区间",
+        "hint": "格式：最小-最大（如 0-2），每天在此区间内随机决定发几条。填 0-0 = 不发",
+        "type": "string",
+        "default": "0-2"
+      },
+      "active_hours": {
+        "description": "活跃时段",
+        "hint": "说说只在此时段内发布，格式 HH:MM-HH:MM（如 08:00-23:00）。留空=全天",
+        "type": "string",
+        "default": "08:00-23:00"
+      },
+      "timezone": {
+        "description": "时区",
+        "hint": "IANA 时区格式，如 Asia/Shanghai。留空使用系统默认",
+        "type": "string",
+        "default": "Asia/Shanghai"
+      },
+      "max_length": {
+        "description": "说说最大字数",
+        "hint": "建议不超过 200 字",
+        "type": "int",
+        "default": 200
+      },
+      "provider_id": {
+        "description": "使用的模型（可选）",
+        "hint": "用于生成说说内容的模型。留空则使用当前默认模型",
+        "type": "string",
+        "default": "",
+        "_special": "select_provider"
+      },
+      "prompt_override": {
+        "description": "自定义说说生成提示词（高级）",
+        "hint": "留空使用默认。支持占位符: {now} {persona} {max_length}",
+        "type": "text",
+        "default": ""
+      }
+    }
+  },
+  "social_scan_settings": {
+    "description": "社交扫描设置",
+    "type": "object",
+    "hint": "控制 Bot 浏览 QQ 空间、回复评论等社交行为。像真人一样，只在特定时段刷空间",
+    "items": {
+      "scan_schedule": {
+        "description": "扫描时段",
+        "hint": "格式: 开始-结束/间隔分钟，多段用逗号隔开。如「08:00-09:00/30, 12:00-13:00/15, 19:00-23:00/10」表示早上每30分钟扫一次，午休每15分钟，晚上每10分钟。留空=不扫描",
+        "type": "string",
+        "default": ""
+      },
+      "reply_to_comments": {
+        "description": "回复自己说说的评论",
+        "hint": "开启后，Bot 会在扫描时检查自己说说下的新评论并以角色身份回复",
+        "type": "bool",
+        "default": true
+      },
+      "max_check_posts": {
+        "description": "检查最近几条说说",
+        "hint": "每次扫描时检查最近 N 条说说的评论，建议 3-10",
+        "type": "int",
+        "default": 5
+      },
+      "watch_friends": {
+        "description": "关注好友列表",
+        "hint": "填写要关注的好友 QQ 号。支持关注等级: QQ号:close(亲密) / QQ号:normal(普通) / QQ号:casual(随缘)。多个用逗号隔开。例如: 273845408:close, 123456789:normal。不写等级默认 normal。可用 /说说 好友 查看 Bot 好友列表",
+        "type": "string",
+        "default": ""
+      },
+      "watch_max_posts": {
+        "description": "每个好友检查几条说说",
+        "hint": "每次扫描时检查每个好友最近 N 条说说，建议 3-5",
+        "type": "int",
+        "default": 3
+      },
+      "watch_signature": {
+        "description": "监测好友签名变化",
+        "hint": "开启后，扫描时会检查好友的签名是否变了，变化时可能触发私聊",
+        "type": "bool",
+        "default": true
+      }
+    }
+  }
+}

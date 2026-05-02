@@ -1,0 +1,8 @@
+name: astrbot_plugin_soul_moments
+display_name: Soul Moments 灵魂说说
+desc: "让 Bot 像真人一样发 QQ 说说/动态，内容完全由角色人格驱动。自动发说说+社交扫描+好友空间监测+好友互动，极致省 token。"
+version: "2.0.0"
+author: "bk的殿下"
+repo: ""
+type: common
+astrbot_version: ">=4.18.0"
